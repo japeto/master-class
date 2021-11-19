@@ -1,0 +1,10 @@
+
+### BACKEND
+mkdir backend
+cd backend
+npm -y init
+npm install -y express
+npm install -y mongoose
+
+### FRONTEND
+npx create-react-app frontend
