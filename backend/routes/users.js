@@ -9,11 +9,10 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({extended:true}));
 
-
 router.route("/search")
      .get((req, resp)=>{
          const { name } = req.query;
-         mgdb.model("User").find({"email":"roca.medina@example.com"}, (err, users)=>{
+         mgdb.model("Users").find({"name": {first:/name/} }, (err, users)=>{
             if(err) throw err;
             resp.json(users);
          })
