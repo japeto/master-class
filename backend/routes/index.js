@@ -10,8 +10,4 @@ app.get("/", (req, resp)=>{
     })
 })
 
-const server = app.listen(8000, ()=>{
-    let host = server.address().address;
-    let port = server.address().port;
-    console.log("Server listening at http://", host, port);
-})
+module.exports = app;
