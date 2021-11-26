@@ -4,12 +4,21 @@ const express = require("express");
 const db = require("../database/db"),
       users = require("../database/users");
 
-const router = express.Router();
+const router = express.Router();  /// ofrece modularidad en tu codigo
 
-router.use(express.json());
-router.use(express.urlencoded({extended:true}));
+router.use(express.json());     /// Convierte el _body_ de las solicitudes a JSON
+router.use(express.urlencoded({extended:true})); // Convierte las solicitudes con parametros a través de la URL
 
 router.route("/search")
+    /**
+     * @swagger
+     * /search:
+     *  get:
+     *   description: response the pong message
+     *  responses:
+     *   200:
+     *    description: {"message","pong"}
+     */
      .get((req, resp)=>{
          const { name } = req.query;
          mgdb.model("Users").find({"name.first":name}, (err, users)=>{
@@ -19,12 +28,46 @@ router.route("/search")
      })
 
 router.route("/")
+    /**
+     * @swagger
+     * /users:
+     *  get:
+     *      summary: Returns a list of users.
+     *      description: Contactame send first 100 users in DB as arrayt the objects.
+     *  responses:
+     *      200:
+     *          description: A User object.
+     *          schema:
+     *              type: object
+     *              properties:
+     *                  id:
+     *                      type: ObjectId
+     *                      example: 619fc8ca9b4b0c1468536c23
+     *      400:
+     *          description: The specified user ID is invalid (e.g. not a number).
+     *      404:
+     *          description: A user with the specified ID was not found.
+     *      default:
+     *          description: Unexpected error
+     */
     .get(function(req, resp){
-        mgdb.model("Users").find({}, (err, users)=>{
+        mgdb.model("Users")
+        .find({})
+        .limit(100)
+        .exec((err, users)=>{
             if(err) throw err;
             resp.json(users);
         })
     })
+    /**
+     * @swagger
+     * /users:
+     *  post:
+     *   description: response the pong message
+     *  responses:
+     *   200:
+     *    description: {"message","pong"}
+     */
     .post((req, resp)=>{
         mgdb.model("Users").create(
             req.body, 
@@ -39,6 +82,35 @@ router.route("/")
     })
 
 router.route("/:id")
+    /** 
+     * @swagger
+     * paths:
+     *  /users/{id}:
+     *  get:
+     *      summary: Returns a user by ID.
+     *    parameters:
+     *      - in: path
+     *      name: id
+     *      required: true
+     *      type: ObjectId
+     *      minimum: 1
+     *      description: The ID of the user to return.
+     *    responses:
+     *       200:
+     *          description: A User object.
+     *          schema:
+     *              type: object
+     *              properties:
+     *              id:
+     *                  type: ObjectId
+     *                  example: 619fc8ca9b4b0c1468536c23
+     *       400:
+     *          description: The specified user ID is invalid (e.g. not a number).
+     *       404:
+     *          description: A user with the specified ID was not found.
+     *       default:
+     *          description: Unexpected error
+    */
     .get(function(req, resp){
         mgdb.model("Users").findById(req.params.id, 
             (err, user)=>{
@@ -52,6 +124,15 @@ router.route("/:id")
                 }
             })
     })
+    /**
+     * @swagger
+     * /users/id:
+     *  put:
+     *   description: response the pong message
+     *  responses:
+     *   200:
+     *    description: {"message","pong"}
+     */
     .put(function(req, resp){
         mgdb.model("Users").findById(req.params.id, 
             (err, user)=>{
@@ -68,6 +149,15 @@ router.route("/:id")
                 }
             })
     })
+    /**
+     * @swagger
+     * /users/id:
+     *  delete:
+     *   description: response the pong message
+     *  responses:
+     *   200:
+     *    description: {"message","pong"}
+     */
     .delete(function(req, resp){
         mgdb.model("Users").findById(req.params.id, 
             (err, user)=>{

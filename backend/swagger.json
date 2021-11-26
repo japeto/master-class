@@ -2,8 +2,8 @@
     "definition":{
         "swagger":"2.0",
         "info":{
-            "version":"1.0.0",
-            "title": "Yet Another Node.js common APP is Contactame!!!",
+            "version":"1.2.0",
+            "title": "Contactame",
             "license":{
                 "name":"MIT",
                 "url":"https://opensource.org/license/MIT"
@@ -14,7 +14,7 @@
             }
 
         },
-        "host":"localhost:5000",
+        "host":"http://localhost:5000",
         "basePath":"/",
         "schemes":[
             "http"
@@ -26,5 +26,5 @@
             "application/json"
         ]
     }, 
-    "apis":["./routers/*.js"]
+    "apis":["./routes/*.js"]
 }
