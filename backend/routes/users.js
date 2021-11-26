@@ -31,9 +31,8 @@ router.route("/")
             (err, user)=>{
             if(err){
                 resp.json({"message":"User does not saved!"});
-                console.log("error when save ", user);
+                console.log("error when save ", err);
             }else{
-                console.log("saved ", user)
                 resp.json(user);
             }
         })
@@ -45,9 +44,11 @@ router.route("/:id")
             (err, user)=>{
                 if(err){
                     console.log("There was a problem ", err);
-                }else{
-                    console.log("Retrieving id ", req.params.id);
+                }else if(user){
                     resp.json(user);
+                }else{
+                    resp.status(404)
+                    resp.json({"message":"Not Found"});
                 }
             })
     })
@@ -57,7 +58,6 @@ router.route("/:id")
                 if(err){
                     console.log("There was a problem ", err);
                 }else{
-                    console.log("Updating id ", req.params.id);
                     user.updateOne(req.body, (err, data)=>{
                         if(err) resp.json({"message": "Has been NOT updated"})
                         resp.json({
@@ -74,7 +74,6 @@ router.route("/:id")
                 if(err){
                     console.log("There was a problem ", err);
                 }else{
-                    console.log("Deleting id ", req.params.id);
                     user.remove((err, user)=>{
                         if(err) resp.json({"message": "Has been NOT deleted"})
                         resp.json({

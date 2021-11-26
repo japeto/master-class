@@ -32,7 +32,10 @@ const userSchema = new mgdb.Schema({
     birth_date:String,
     picture:pictureSchema
 });
-
+/**
+ * Check if model has been compiled.
+ * @param {string} modelName 
+ */
 const checkModel = ( modelName )=>{
     mgdb.modelNames().indexOf(modelName) == -1
     ? mgdb.model(modelName, userSchema)
