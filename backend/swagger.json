@@ -1,0 +1,30 @@
+{
+    "definition":{
+        "swagger":"2.0",
+        "info":{
+            "version":"1.0.0",
+            "title": "Yet Another Node.js is Contactame!!!",
+            "license":{
+                "name":"MIT",
+                "url":"https://opensource.org/license/MIT"
+            },
+            "contact":{
+                "name":"JAPeTo + Mision TIC 2022",
+                "url":"https://github.com/japeto"
+            }
+
+        },
+        "host":"localhost:5000",
+        "basePath":"/",
+        "schemes":[
+            "http"
+        ],
+        "consumes":[
+            "application/json"
+        ],
+        "produces":[
+            "application/json"
+        ]
+    }, 
+    "apis":["./routers/*.js"]
+}
