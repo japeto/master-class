@@ -1,0 +1,57 @@
+{
+    "_id": "619fc8ca9b4b0c1468536c23",
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "name_test",
+      "last": "lastname_test"
+    },
+    "location": {
+      "street": {
+        "number": 2809,
+        "name": "Brogade"
+      },
+      "city": "Argerskov",
+      "state": "Sjælland",
+      "country": "Denmark",
+      "postcode": 28628,
+      "coordinates": {
+        "latitude": "-35.9987",
+        "longitude": "168.1552"
+      },
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "lea.larsen@example.com",
+    "login": {
+      "uuid": "8777411c-3e38-4463-a3f5-88794ac1402c",
+      "username": "greenleopard595",
+      "password": "wifey",
+      "salt": "6mHrxlBp",
+      "md5": "22bcbafe0f6b2467417317ca047a1bba",
+      "sha1": "a27ac3ccab667349d8a3ba3722f8237dce44cdaf",
+      "sha256": "88b58552cef56c7adb9cfb5c75242903fb25752cf5112aff1de9f2cd53aa82c7"
+    },
+    "dob": {
+      "date": "1971-02-17T04:23:39.147Z",
+      "age": 50
+    },
+    "registered": {
+      "date": "2013-02-17T18:04:31.289Z",
+      "age": 8
+    },
+    "phone": "67120189",
+    "cell": "60401137",
+    "id": {
+      "name": "CPR",
+      "value": "170271-1207"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/25.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/women/25.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/25.jpg"
+    },
+    "nat": "DK"
+  }

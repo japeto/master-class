@@ -3,7 +3,7 @@
         "swagger":"2.0",
         "info":{
             "version":"1.0.0",
-            "title": "Yet Another Node.js is Contactame!!!",
+            "title": "Yet Another Node.js common APP is Contactame!!!",
             "license":{
                 "name":"MIT",
                 "url":"https://opensource.org/license/MIT"

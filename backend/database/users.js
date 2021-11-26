@@ -33,5 +33,10 @@ const userSchema = new mgdb.Schema({
     picture:pictureSchema
 });
 
-mgdb.model("Users", userSchema);
+const checkModel = ( modelName )=>{
+    mgdb.modelNames().indexOf(modelName) == -1
+    ? mgdb.model(modelName, userSchema)
+    : mgdb.connection.model(modelName)
+}
 
+checkModel("Users")
