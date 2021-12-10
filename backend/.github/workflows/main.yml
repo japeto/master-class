@@ -1,4 +1,4 @@
-name: Contactame Backend CI/CD
+name: Contactame Backedn CI/CD
 
 on:
   push:
@@ -11,9 +11,12 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+
+    # runs all of the steps inside the specified container rather than on the VM host.  
+    # Because of this the network configuration changes from host based network to a container network
     container:
       image: node
-    
+
     services:
       mongodb:
         image: mongo
@@ -52,4 +55,3 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USER }}/contactame-back:${{ github.sha }}
           docker push ${{ secrets.DOCKER_USER }}/contactame-back:latest
-          
