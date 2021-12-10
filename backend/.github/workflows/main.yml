@@ -28,7 +28,7 @@ jobs:
       - name: Install and test
         run: |
           npm install
-          npm test
+          
         env:
           # use mongodb for the host here because we have specified a container for the job.
           # If we were running the job on the VM this would be localhost
